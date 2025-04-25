@@ -7,9 +7,9 @@ import (
 	"net/http"
 	"time"
 
-	"auth_service_hi/config"
-	"auth_service_hi/utils"
 	"github.com/go-redis/redis/v8"
+	"herb_immortal/auth_service_hi/config"
+	"herb_immortal/auth_service_hi/utils"
 )
 
 type LoginRequest struct {

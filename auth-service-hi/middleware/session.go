@@ -2,9 +2,10 @@
 package middleware
 
 import (
-	"auth_service_hi/config"
 	"github.com/go-redis/redis/v8"
+	"herb_immortal/auth_service_hi/config"
 	"net/http"
+	"time"
 )
 
 func SessionMiddleware(rdb *redis.Client, next http.HandlerFunc) http.HandlerFunc {
@@ -22,7 +23,7 @@ func SessionMiddleware(rdb *redis.Client, next http.HandlerFunc) http.HandlerFun
 		}
 
 		// Optional: Extend session
-		rdb.Expire(config.Ctx, token, 7*24*3600)
+		rdb.Expire(config.Ctx, token, 7*24*time.Hour)
 		next(w, r)
 	}
 }
